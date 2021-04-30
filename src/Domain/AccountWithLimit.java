@@ -1,8 +1,8 @@
 package src.Domain;
 
-public class AccountWithLimit extends Account{
+public class AccountWithLimit extends Account {
     private double _limit = 1000;
-    
+
     public AccountWithLimit(String holder) {
         super(holder);
     }
@@ -13,16 +13,16 @@ public class AccountWithLimit extends Account{
 
     @Override
     public void withdraw(Transaction transaction) throws IllegalArgumentException {
-		if(transaction.getAmount() > (_balance + _limit)) { 
+        if (transaction.getAmount() > (_balance + _limit)) {
             throw new IllegalArgumentException("Saldo insuficiente!");
         }
 
         _balance -= transaction.getAmount();
         _transactions.add(transaction);
-	}
+    }
 
     @Override
     public String toString() {
-		return super.toString() + "Limite: " + _limit + "\n";
-	}
+        return super.toString() + "Limite: " + _limit + "\n";
+    }
 }
